@@ -4,7 +4,7 @@ let x = 40;
 let y = 293;
 let leftPressed = false;
 let rightPressed = false;
-let spacePressed = false;
+let upPressed = false;
 
 //remember to draw stars in random places
 
@@ -33,8 +33,8 @@ function keyDownHandler(e) {
   	leftPressed = true;
   } if (e.key == "Right" || e.key == "ArrowRight") {
   	rightPressed = true;
-  } if (e.key == "Space"); {
-  	spacePressed = true;
+  } if (e.key == "ArrowUp") {
+      upPressed = true;
   }
 }
 function keyUpHandler(e) {
@@ -42,9 +42,12 @@ function keyUpHandler(e) {
   	leftPressed = false;
   } if (e.key == "Right" || e.key == "ArrowRight"); {
   	rightPressed = false;
-  } if (e.key == "Space"); {
-  	spacePressed = false;
+  } if (e.key == "ArrowUp") {
+    upPressed = false;
   }
+  // } if (e.key == "keyA"); {
+  // 	upPressed = false;
+  // }
 }
 
 function draw() {
@@ -56,8 +59,10 @@ function draw() {
   	x += -3;
   } if (rightPressed == true) {
   	x += 3;
-  } if (spacePressed === true) {
-  	y += -3;
+  } if (upPressed == true) {
+  	let timeVariable = 0;
+    y += -3;
+      
   }
 }
 
