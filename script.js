@@ -45,25 +45,21 @@ function keyUpHandler(e) {
   } if (e.key == "ArrowUp") {
     upPressed = false;
   }
-  // } if (e.key == "keyA"); {
-  // 	upPressed = false;
-  // }
 }
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 	drawMap();
   drawMan();
-  
+  //timeVariable += 1;
+
   if (leftPressed == true) {
-  	x += -3;
+  	x += -1.5;
   } if (rightPressed == true) {
-  	x += 3;
+  	x += 1.5;
   } if (upPressed == true) {
-  	let timeVariable = 0;
-    y += -3;
-      
+    y += -2;
   }
 }
 
-let interval = setInterval(draw, 10)
+let interval = setInterval(draw, 10);
