@@ -5,6 +5,7 @@ let y = 293;
 let leftPressed = false;
 let rightPressed = false;
 let upPressed = false;
+let collision = false;
 
 //remember to draw stars in random places
 
@@ -59,6 +60,9 @@ function draw() {
   	x += 1.5;
   } if (upPressed == true) {
     y += -2;
+    if (timeVariable == 5 && collision == false;) {
+        console.log("This worked")
+    }
   }
 }
 
