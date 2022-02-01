@@ -2,6 +2,8 @@ let canvas = document.getElementById("myCanvas")
 let ctx = canvas.getContext("2d")
 let x = 40;
 let y = 293;
+let dx = 2;
+let dy = 2;
 let leftPressed = false;
 let rightPressed = false;
 let upPressed = false;
@@ -52,7 +54,13 @@ function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 	drawMap();
   drawMan();
-  //timeVariable += 1;
+  timeVariable += 1;
+
+  //this is where collision detection will be
+  if (x > 50) {
+      collision = true;
+      dx = 0;
+  }
 
   if (leftPressed == true) {
   	x += -1.5;
@@ -60,7 +68,7 @@ function draw() {
   	x += 1.5;
   } if (upPressed == true) {
     y += -2;
-    if (timeVariable == 5 && collision == false;) {
+    if (timeVariable == 5 && collision == false) {
         console.log("This worked")
     }
   }
