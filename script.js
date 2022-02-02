@@ -10,7 +10,11 @@ let upPressed = false;
 let collision = false;
 let timeVariable = 5;
 
-//remember to draw stars in random places
+//remember to draw the stars
+
+function drawStars () {
+  let random1x = Math.trunc(Math.random() * (5 + 0) + 0)
+}
 
 function drawMap() {
 	//draws floor
@@ -73,17 +77,21 @@ function draw() {
       	x += -1;
         dx = 2;
       }
-  } if (y > 250) {
-      collision = true;
-      dy = 0;
+    }
+  if (y > 285) {
+    collision = true;
+    dy = 0;
+    if (upPressed == true) {
+      y += -1;
+      dy = 2;
+    }
   }
-
   if (leftPressed == true) {
   	x += -dx;
   } if (rightPressed == true) {
   	x += dx;
   } if (upPressed == true) {
-    y += -2;
+    y += dy;
     if (timeVariable == 5 && collision == false) {
         console.log("This worked")
     }
