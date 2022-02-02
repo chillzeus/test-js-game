@@ -8,6 +8,7 @@ let leftPressed = false;
 let rightPressed = false;
 let upPressed = false;
 let collision = false;
+let timeVariable = 5;
 
 //remember to draw stars in random places
 
@@ -57,15 +58,30 @@ function draw() {
   timeVariable += 1;
 
   //this is where collision detection will be
-  if (x > 50) {
+  if (x < 0) {
+    collision = true;
+    dx = 0;
+    if (rightPressed == true) {
+      x += -1;
+      dx = 2;
+    }
+  }
+  if (x > 485) {
       collision = true;
       dx = 0;
+      if (leftPressed == true) {
+      	x += -1;
+        dx = 2;
+      }
+  } if (y > 250) {
+      collision = true;
+      dy = 0;
   }
 
   if (leftPressed == true) {
-  	x += -1.5;
+  	x += -dx;
   } if (rightPressed == true) {
-  	x += 1.5;
+  	x += dx;
   } if (upPressed == true) {
     y += -2;
     if (timeVariable == 5 && collision == false) {
