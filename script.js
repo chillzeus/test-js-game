@@ -1,14 +1,17 @@
 let canvas = document.getElementById("myCanvas")
 let ctx = canvas.getContext("2d")
 let x = 40;
-let y = 293;
+//second level is 225;
+let y = 225;
 let dx = 2;
 let dy = 2;
 let leftPressed = false;
 let rightPressed = false;
 let upPressed = false;
+let downPressed = false;
 let collision = false;
 let timeVariable = 5;
+let floor = 292;
 
 //remember to draw the stars
 
@@ -17,12 +20,25 @@ function drawStars () {
 }
 
 function drawMap() {
+
 	//draws floor
-  ctx.beginPath();ctx.rect(0, 308, 500, 30);ctx.fillStyle = "#9c6319";ctx.fill();ctx.closePath();
+  //ctx.beginPath();ctx.rect(0, 308, 500, 30);ctx.fillStyle = "#9c6319";ctx.fill();ctx.closePath();
+  drawPath(0, 308, 500, 30, "#9c6319");
   //this draws the walkways
-  ctx.beginPath();ctx.rect(0, 240, 500, 10);ctx.fillStyle = "Blue";ctx.fill();ctx.closePath();
-  ctx.beginPath();ctx.rect(0, 170, 500, 10);ctx.fillStyle = "Blue";ctx.fill();ctx.closePath();
-  ctx.beginPath();ctx.rect(0, 100, 500, 10);ctx.fillStyle = "Blue";ctx.fill();ctx.closePath();
+  //ctx.beginPath();ctx.rect(0, 240, 500, 10);ctx.fillStyle = "Blue";ctx.fill();ctx.closePath();
+  drawPath(0, 240, 500, 10, "Blue");
+  drawPath(0, 170, 500, 10, "Blue");
+  drawPath(0, 100, 500, 10, "Blue");
+  //draws the ladders
+  drawPath(430, 252, 15, 55,"Grey");
+}
+
+function drawPath(x, y, w, h, fillStyle) {
+  ctx.beginPath();
+  ctx.rect(x, y, w, h);
+  ctx.fillStyle = fillStyle;
+  ctx.fill();
+  ctx.closePath();
 }
 
 function drawMan() {
@@ -43,6 +59,8 @@ function keyDownHandler(e) {
   	rightPressed = true;
   } if (e.key == "ArrowUp") {
       upPressed = true;
+  } if (e.key == "ArrowDown") {
+      downPressed = true;
   }
 }
 function keyUpHandler(e) {
@@ -52,6 +70,8 @@ function keyUpHandler(e) {
   	rightPressed = false;
   } if (e.key == "ArrowUp") {
     upPressed = false;
+  } if (e.key == "ArrowDown") {
+    downPressed = false;
   }
 }
 
@@ -78,7 +98,7 @@ function draw() {
         dx = 2;
       }
     }
-  if (y > 285) {
+  if (y > 292) {
     collision = true;
     dy = 0;
     if (upPressed == true) {
@@ -91,11 +111,18 @@ function draw() {
   } if (rightPressed == true) {
   	x += dx;
   } if (upPressed == true) {
-    y += dy;
-    if (timeVariable == 5 && collision == false) {
-        console.log("This worked")
+    y += -dy;
+    if (collision == true && downPressed == false) {
+      
     }
   }
-}
+  if (downPressed == true) {
+    y += dy;   
+  }
+  //remember new variable for levels (floor??)
+  if (y < floor) {
+    y += 0.7;
+  }
+}  
 
 let interval = setInterval(draw, 10);
