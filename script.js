@@ -11,7 +11,8 @@ let downPressed = false;
 let collision = false;
 let timeVariable = 5;
 let jumped = false;
-let floor = 285;
+let floor = 292;
+let floorTest = 100;
 
 //remember to draw the stars
 
@@ -63,7 +64,7 @@ function draw() {
 	drawMap();
   drawMan();
   timeVariable += 1;
-
+  
   if (x < 0) {
     collision = true;
     dx = 0;
@@ -94,21 +95,17 @@ function draw() {
   } if (rightPressed == true) {
   	x += dx;
   } if (upPressed == true) {
-    y += dy;
+    y += -dy;
     jumped = true;
   } if (downPressed == true) {
-    y += -dy;
+    y += dy;
   }
-
-  if (jumped == true) {
+  
+  if (y < floor) {
+  	y += 1;
+  }
+  if (250 > y) {
     dy = 0;
-    if (y > floor + 20) {
-      for (let i = 0; i > 20; i++) {
-        y += 1;
-      }
-      jumped = false;
-      dy = 2;
-    }
   }
 }
 
