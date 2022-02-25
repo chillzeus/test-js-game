@@ -1,3 +1,5 @@
+// i call this one "spaghetti code"
+
 let canvas = document.getElementById("myCanvas")
 let ctx = canvas.getContext("2d")
 let x = 40;
@@ -121,12 +123,15 @@ function draw() {
   }
   //remember new variable for levels (floor??)
     //this technically works
-  if (x >= 100) {
+  if (x >= 428) {
     dx = 0;
-    x += - 1;
-    dx = 2;
+    //x += - 1;
+		if (leftPressed == true) {
+    	dx = 2;
+      x += -1;
+    }
     if (upPressed == true) {
-    	y += 40;
+    	y += -2;
     }
   }
   if (y < floor) {
