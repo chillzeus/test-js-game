@@ -113,15 +113,26 @@ function draw() {
   } if (upPressed == true) {
     y += -dy;
     if (collision == true && downPressed == false) {
-      
-    }
+        //what is this?
+      }
   }
   if (downPressed == true) {
     y += dy;   
   }
   //remember new variable for levels (floor??)
+    //this technically works
+  if (x >= 100) {
+    dx = 0;
+    x += - 1;
+    dx = 2;
+    if (upPressed == true) {
+    	y += 40;
+    }
+  }
   if (y < floor) {
     y += 0.7;
+  } if (y == floor) {
+  	dy = 0;
   }
 }  
 
