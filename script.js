@@ -22,12 +22,7 @@ function drawStars () {
 }
 
 function drawMap() {
-
-	//draws floor
-  //ctx.beginPath();ctx.rect(0, 308, 500, 30);ctx.fillStyle = "#9c6319";ctx.fill();ctx.closePath();
   drawPath(0, 308, 500, 30, "#9c6319");
-  //this draws the walkways
-  //ctx.beginPath();ctx.rect(0, 240, 500, 10);ctx.fillStyle = "Blue";ctx.fill();ctx.closePath();
   drawPath(0, 240, 500, 10, "Blue");
   drawPath(0, 170, 500, 10, "Blue");
   drawPath(0, 100, 500, 10, "Blue");
@@ -82,6 +77,7 @@ function draw() {
 	drawMap();
   drawMan();
   timeVariable += 1;
+  //console.log(y)
 
   //this is where collision detection will be
   if (x < 0) {
@@ -123,7 +119,7 @@ function draw() {
   }
   //remember new variable for levels (floor??)
     //this technically works
-  if (x >= 428) {
+  if (x >= 428 && floor == 292) {
     dx = 0;
     //x += - 1;
 		if (leftPressed == true) {
@@ -134,6 +130,16 @@ function draw() {
     	y += -2;
     }
   }
+  if (x >= 40 && floor == 240) {
+  	//
+  }
+  if (x >= 428 && floor == 170) {
+  	//
+  }
+  if (x >= 40 && floor == 100) {
+  	//
+  }
+  
   if (y < floor) {
     y += 0.7;
   } if (y == floor) {
